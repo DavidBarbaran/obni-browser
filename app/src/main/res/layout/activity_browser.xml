@@ -1,44 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/degrade_bg"
-    android:fitsSystemWindows="true"
-    tools:context=".activity.BrowserActivity">
+    android:orientation="vertical"
+    tools:context="obni.browser.activity.BrowserActivity">
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:alpha="0.95"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/mountain" />
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            android:background="@color/gray"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:layout_height="wrap_content">
+
+            <obni.browser.widget.SearchBar
+                android:id="@+id/searchBar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size56"
+                android:transitionName="searchBar" />
 
 
-    <ImageView
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:adjustViewBounds="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_moon" />
-
-    <obni.browser.widget.SearchBar
-        android:id="@+id/searchBar"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/size56"
-        android:layout_marginEnd="@dimen/spacing16"
-        android:layout_marginStart="@dimen/spacing16"
-        android:layout_marginTop="@dimen/spacing32"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        </android.support.v7.widget.Toolbar>
 
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.design.widget.AppBarLayout>
+</android.support.design.widget.CoordinatorLayout>
