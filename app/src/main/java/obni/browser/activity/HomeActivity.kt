@@ -8,7 +8,6 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.util.Log
 import android.view.WindowManager
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.search_bar.*
 import obni.browser.R
@@ -21,7 +20,6 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.view.View
 import obni.browser.config.Setting
 
-
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +30,6 @@ class HomeActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.transparent)
         searchBar.onSearch = object : SearchBar.OnSearch {
             override fun search(q: String) {
-                Toast.makeText(this@HomeActivity, "Your search is: $q", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this@HomeActivity, BrowserActivity::class.java)
                 intent.putExtra(Setting.SEARCH, q)
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this@HomeActivity, searchBar as View, "searchBar")
@@ -59,20 +56,17 @@ class HomeActivity : AppCompatActivity() {
         webRecycler.layoutManager = GridLayoutManager(this, 4)
         webRecycler.adapter = adapter
         touchHelper.attachToRecyclerView(webRecycler)
-
     }
 
     private fun list(): MutableList<Web> {
         var list = mutableListOf<Web>()
-        list.add(Web("Youtube", "www.youtube.com", "ic_facebook"))
+        list.add(Web("Youtube", "www.facebook.com", "ic_facebook"))
         list.add(Web("Youtube", "www.youtube.com", "ic_youtube"))
-        list.add(Web("Youtube", "www.youtube.com", "ic_twitter"))
-        list.add(Web("Youtube", "www.youtube.com", "ic_instagram"))
-        list.add(Web("Youtube", "www.youtube.com", "ic_blogger"))
-        list.add(Web("Youtube", "www.youtube.com", "ic_tumblr"))
-        list.add(Web("Youtube", "www.youtube.com", "ic_add"))
-
+        list.add(Web("Youtube", "www.twitter.com", "ic_twitter"))
+        list.add(Web("Youtube", "www.instagram.com", "ic_instagram"))
+        list.add(Web("Youtube", "www.blogger.com", "ic_blogger"))
+        list.add(Web("Youtube", "www.tumblr.com", "ic_tumblr"))
+        list.add(Web("Youtube", "", "ic_add"))
         return list
     }
-
 }

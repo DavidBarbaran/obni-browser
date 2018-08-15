@@ -108,6 +108,10 @@ class SearchBar(context: Context?, attrs: AttributeSet?) : CardView(context!!, a
         }
     }
 
+    fun setSearch(text: String){
+        searchEdit.setText(text)
+    }
+
     interface OnSearch {
         fun search(q: String)
     }

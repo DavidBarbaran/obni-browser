@@ -17,12 +17,9 @@ class AddWebDialog(context: Context) : AlertDialog(context) {
         val layoutInflater = LayoutInflater.from(getContext())
         val view = layoutInflater.inflate(R.layout.dialog_add_web, null)
 
-
-
         setView(view)
         //window.setBackgroundDrawableResource(android.R.color.transparent)
         //window.attributes.gravity = Gravity.TOP
-
 
         val params = window.attributes
         params.y = -100
